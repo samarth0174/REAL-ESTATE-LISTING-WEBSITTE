@@ -112,8 +112,8 @@ $mypassword=$_POST["mypassword"];
 
 $insert_sql="INSERT INTO admin VALUES('', '$name', '$myusername', '$mypassword')";
 
-$sql_result=mysql_query($insert_sql) or die("Error in inserting data due to
-".mysql_error());
+$sql_result=mysqli_query($db,$insert_sql) or die("Error in inserting data due to
+".mysqli_error());
 
 if($sql_result)
 echo "<a href='admin_home.php'><h4 class='alert_success'>A Success Message</h4></a>";

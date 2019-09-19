@@ -127,16 +127,12 @@ if($_SESSION["myusername"]=="")
         <p>
           <?php
 
-$host="localhost";
-$username="root";
-$password="";
-$db_name="property";
-$tbl_name="property";
 
-mysql_connect("$host","$username","$password")or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB");
+$tbl_name="property";
+$db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
+				
 $sql="SELECT*FROM $tbl_name GROUP BY id_property DESC";
-$result=mysql_query($sql);
+$result=mysqli_query($db,$sql);
 ?>
         </p>
         <table width="838" border="0" align="center" cellpadding="0" cellspacing="1">
@@ -162,7 +158,7 @@ $result=mysql_query($sql);
 </tr>
 
 <?php
-while($rows=mysql_fetch_array($result))
+while($rows=mysqli_fetch_array($result))
 {
 ?>
 
@@ -201,7 +197,7 @@ while($rows=mysql_fetch_array($result))
 </table>
 
 <?php
-mysql_close();
+mysqli_close();
 ?>
 	    <p>&nbsp;</p>
 	    <p>&nbsp;</p>

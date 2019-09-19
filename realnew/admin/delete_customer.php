@@ -106,19 +106,15 @@
 			<p>
 <?php
 
-$host="localhost";
-$username="root";
-$password="";
-$db_name="property";
+
 $tbl_name="customer";
 
-mysql_connect("$host","$username","$password")or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB");
-
+$db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
+				
 $name=$_GET['name'];
 
 $sql="DELETE FROM $tbl_name WHERE name='$name'";
-$result=mysql_query($sql);
+$result=mysqli_query($db,$sql);
 
 if($result)
 {
@@ -129,7 +125,7 @@ else{
 	echo"ERROR";
 }
 
-mysql_close();
+mysqli_close();
 ?>
 
 			<p>&nbsp;</p>

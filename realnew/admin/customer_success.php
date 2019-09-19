@@ -116,8 +116,8 @@ $id_property=$_POST["id_property"];
 
 $insert_sql="INSERT INTO customer VALUES('', '$name', '$mobile_phone', '$cus_email', '$date', '$time', '$reason', '$id_property')";
 
-$sql_result=mysql_query($insert_sql) or die("Error in inserting data due to
-".mysql_error());
+$sql_result=mysqli_query($db,$insert_sql) or die("Error in inserting data due to
+".mysqli_error());
 
 if($sql_result)
 echo "<a href='view_all.php'><h4 class='alert_success'>A Success Message</h4></a>";

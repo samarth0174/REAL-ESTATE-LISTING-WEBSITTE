@@ -121,16 +121,12 @@ if($_SESSION["myusername"]=="")
 		  <article class="stats_graph"> 
 			<?php
         
-        $host="localhost";
-        $username="root";
-        $password="";
-        $db_name="property";
         $tbl_name="admin";
         
-        mysql_connect("$host","$username","$password")or die("cannot connect");
-        mysql_select_db("$db_name")or die("cannot select DB");
-        $sql="SELECT*FROM $tbl_name";
-        $result=mysql_query($sql);
+		$db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
+				
+		$sql="SELECT*FROM $tbl_name";
+        $result=mysqli_query($db,$sql);
         ?>
         
         
@@ -149,7 +145,7 @@ if($_SESSION["myusername"]=="")
         </tr>
         
         <?php
-        while($rows=mysql_fetch_array ($result))
+        while($rows=mysqli_fetch_array ($result))
         {
         ?>
         
@@ -181,7 +177,7 @@ if($_SESSION["myusername"]=="")
         </table>
         </center>
         <?php
-        mysql_close();
+        mysqli_close();
         ?>
 
 
@@ -226,10 +222,10 @@ if($_SESSION["myusername"]=="")
         $db_name="property";
         $tbl_name="message";
         
-        mysql_connect("$host","$username","$password")or die("cannot connect");
-        mysql_select_db("$db_name")or die("cannot select DB");
+        mysqli_connect("$host","$username","$password")or die("cannot connect");
+        mysqli_select_db("$db_name")or die("cannot select DB");
         $sql="SELECT*FROM $tbl_name ORDER BY id_message DESC";
-        $result=mysql_query($sql);
+        $result=mysqli_query($sql);
         ?><!-- end of messages article -->
 		
 	  <div class="clear"></div><!-- end of post new article --><!-- end of styles article -->

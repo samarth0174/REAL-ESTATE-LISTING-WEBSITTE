@@ -12,7 +12,7 @@ $email=$_POST["email"];
 
 $update_sql="UPDATE admin SET name = '$name', username = '$username', password = '$password', tel = '$tel', h_p = '$h_p', fax = '$fax', email = '$email'
 WHERE id = '$id'";
-$sql_result=mysql_query($update_sql) or die("Error in updating data due to ".mysql_error());
+$sql_result=mysqli_query($db,$update_sql) or die("Error in updating data due to ".mysqli_error());
 if($sql_result)
 
 {
@@ -24,6 +24,6 @@ echo "<a href='index.html'><img src='images/success.ico'></a>";
 else
 {
 echo "Error";
-echo mysql_error();
+echo mysqli_error();
 }
 ?>

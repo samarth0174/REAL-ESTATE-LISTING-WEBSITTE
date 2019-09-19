@@ -220,11 +220,11 @@ print "</tr>";
             <table width="360" border="0">
               <tr>
                 <td width="154"><img src="admin/images/aaaassss.jpg" width="149" height="155"></td>
-                <td width="190"><p>Vincent Khaw</p>
+                <td width="190"><p>Samarth Gupta</p>
                   <p>Senior Negotiator</p>
                   <p>+014 321 6788</p>
-                  <p>vincent_khaw@yahoo.com</p>
-                  <p>www.jann.com.my</p>
+                  <p>ss@yahoo.com</p>
+                  <p>www.vitestates.com</p>
                   <p>&nbsp;</p></td>
               </tr>
           </table>

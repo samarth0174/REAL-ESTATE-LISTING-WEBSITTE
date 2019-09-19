@@ -106,19 +106,15 @@
 			<p>
 <?php
 
-$host="localhost";
-$username="root";
-$password="";
-$db_name="property";
 $tbl_name="feedback";
 
-mysql_connect("$host","$username","$password")or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB");
+$db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
+				
 
 $id_feedback=$_GET['id_feedback'];
 
 $sql="DELETE FROM $tbl_name WHERE id_feedback='$id_feedback'";
-$result=mysql_query($sql);
+$result=mysql_query($db,$sql);
 
 if($result)
 {

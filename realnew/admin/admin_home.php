@@ -122,16 +122,13 @@ if($_SESSION["myusername"]=="")
 			  <article class="stats_graph"> 
 			<?php
         
-        $host="localhost";
-        $username="root";
-        $password="";
-        $db_name="property";
+        
         $tbl_name="admin";
         
-        mysql_connect("$host","$username","$password")or die("cannot connect");
-        mysql_select_db("$db_name")or die("cannot select DB");
+        $db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
+				
         $sql="SELECT*FROM $tbl_name";
-        $result=mysql_query($sql);
+        $result=mysqli_query($db,$sql);
         ?>
         
         
@@ -150,7 +147,7 @@ if($_SESSION["myusername"]=="")
         </tr>
         
         <?php
-        while($rows=mysql_fetch_array ($result))
+        while($rows=mysqli_fetch_array ($result))
         {
         ?>
         
@@ -180,7 +177,7 @@ if($_SESSION["myusername"]=="")
         </table>
         </center>
         <?php
-        mysql_close();
+        mysqli_close($db);
         ?>
 
 
@@ -204,16 +201,12 @@ if($_SESSION["myusername"]=="")
 		</header>
 			<?php
         
-        $host="localhost";
-        $username="root";
-        $password="";
-        $db_name="property";
+       
         $tbl_name="feedback";
-        
-        mysql_connect("$host","$username","$password")or die("cannot connect");
-        mysql_select_db("$db_name")or die("cannot select DB");
-        $sql="SELECT*FROM $tbl_name ORDER BY id_feedback DESC";
-        $result=mysql_query($sql);
+		
+        $db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
+		$sql="SELECT*FROM $tbl_name ORDER BY id_feedback DESC";
+        $result=mysqli_query($db,$sql);
         ?>
 			
 			<div id="tab1" class="tab_content">
@@ -229,7 +222,7 @@ if($_SESSION["myusername"]=="")
 			</thead> 
         
         <?php
-        while($rows=mysql_fetch_array ($result))
+        while($rows=mysqli_fetch_array ($result))
         {
         ?>
             
@@ -254,21 +247,17 @@ if($_SESSION["myusername"]=="")
 
             
         <?php
-        mysql_close();
+        mysqli_close($db);
         ?>
 			</div><!-- end of #tab1 -->
 			<?php
         
-        $host="localhost";
-        $username="root";
-        $password="";
-        $db_name="property";
+        $db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
+       
         $tbl_name="message";
         
-        mysql_connect("$host","$username","$password")or die("cannot connect");
-        mysql_select_db("$db_name")or die("cannot select DB");
         $sql="SELECT*FROM $tbl_name ORDER BY id_message DESC";
-        $result=mysql_query($sql);
+        $result=mysqli_query($db,$sql);
         ?>
 			
 			<div id="tab2" class="tab_content">
@@ -284,7 +273,7 @@ if($_SESSION["myusername"]=="")
 			</thead> 
         
         <?php
-        while($rows=mysql_fetch_array ($result))
+        while($rows=mysqli_fetch_array ($result))
         {
         ?>
             
@@ -309,7 +298,7 @@ if($_SESSION["myusername"]=="")
 
             
         <?php
-        mysql_close();
+        mysqli_close();
         ?>
 			</div><!-- end of #tab2 -->
 			
@@ -318,23 +307,20 @@ if($_SESSION["myusername"]=="")
 		</article><!-- end of content manager article -->
 			<?php
         
-        $host="localhost";
-        $username="root";
-        $password="";
-        $db_name="property";
+      
         $tbl_name="message";
         
-        mysql_connect("$host","$username","$password")or die("cannot connect");
-        mysql_select_db("$db_name")or die("cannot select DB");
-        $sql="SELECT*FROM $tbl_name ORDER BY id_message DESC";
-        $result=mysql_query($sql);
+	    
+        $db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
+		$sql="SELECT*FROM $tbl_name ORDER BY id_message DESC";
+        $result=mysqli_query($db,$sql);
         ?>
 		<article class="module width_quarter">
 			<header><h3>Messages</h3></header>
 			<div class="message_list">
 				<div class="module_content">
                                     <?php
-        while($rows=mysql_fetch_array ($result))
+        while($rows=mysqli_fetch_array ($result))
         {
         ?>
 
@@ -351,7 +337,7 @@ if($_SESSION["myusername"]=="")
 
 			<footer>
         <?php
-        mysql_close();
+        mysqli_close($db);
         ?>
 
 				<form class="post_message">

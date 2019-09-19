@@ -3,7 +3,7 @@
           <td align="center"><?php include('admin/connection.php'); ?>
  
 <?php
-$get_id_property=mysqli_real_escape_string($_POST['post_item']);
+$get_id_property=($_POST['post_item']);
 $id_property_sql="SELECT * FROM property WHERE id_property='$get_id_property'";
 $id_property_result=mysqli_query($db,$id_property_sql) or die(mysqli_error());
 

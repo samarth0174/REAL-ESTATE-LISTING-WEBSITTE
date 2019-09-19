@@ -107,19 +107,18 @@
 			<div class="module_content">
             
             <?php
-$db_hostname = 'localhost';
-$db_username = 'root';
-$db_password = '';
+
 $db_database = 'property';
 
 // Database Connection String
-$con = mysql_connect($db_hostname,$db_username,$db_password);
-if (!$con)
+$db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
+				
+if (!$db)
   {
-  die('Could not connect: ' . mysql_error());
+  die('Could not connect: ' . mysqli_error());
   }
 
-mysql_select_db($db_database, $con);
+mysqli_select_db($db,$db_database);
 ?>
 
 <!DOCTYPE html>
@@ -141,12 +140,12 @@ mysql_select_db($db_database, $con);
 <?php
 if (!empty($_REQUEST['term'])) {
 
-$term = mysql_real_escape_string($_REQUEST['term']);     
+$term = mysqli_real_escape_string($_REQUEST['term']);     
 
 $sql = "SELECT * FROM customer WHERE name LIKE '%".$term."%'"; 
-$r_query = mysql_query($sql); 
+$r_query = mysqli_query($sql); 
 
-while ($row = mysql_fetch_array($r_query)){  
+while ($row = mysqli_fetch_array($r_query)){  
 echo 'Primary key			: ' .$row['cus_id'];  
 echo '<br /> Code			: ' .$row['id_property'];  
 echo '<br /> Description	: '	.$row['name'];  

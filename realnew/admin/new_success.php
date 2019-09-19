@@ -124,8 +124,8 @@ $text=$_POST["text"];
 
 $insert_sql="INSERT INTO property VALUES('', '$name_property', '$type_property', '$add1', '$add2', '$price', '$price_type', '$land_area', '$groos_floor_area', '$leasehold', '$beds', '$baths', '$contact_no', '$per_square_feet', '$square_feet', '$text')";
 
-$sql_result=mysql_query($insert_sql) or die("Error in inserting data due to
-".mysql_error());
+$sql_result=mysqli_query($db,$insert_sql) or die("Error in inserting data due to
+".mysqli_error());
 
 if($sql_result)
 echo "<a href='admin_view.php'><h4 class='alert_success'>A Success Message</h4></a>";
