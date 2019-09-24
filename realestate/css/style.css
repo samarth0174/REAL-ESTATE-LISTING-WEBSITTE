@@ -1,0 +1,226 @@
+@charset "utf-8";
+/* CSS Document */
+
+html {
+	font-family: 'Source Sans Pro', sans-serif;
+	line-height: 1.15;
+}
+
+
+/* -------------------------------------------------- HEADER -------------------------------------------------*/
+
+header {
+	background-color: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	box-shadow: 0 0 5px 0 #eaeaea;
+	z-index: 1;
+
+}
+
+header *{
+	display: inline;
+}
+
+header li {
+	margin: 20px;
+}
+
+header li a {
+	text-decoration: none;
+	color: #3b5998;
+	font-weight: 700;
+	font-size: small;
+}
+header li a:hover{
+	color: #2d3748;
+}
+
+header li input:focus{
+	outline: none !important;
+	border: 1px solid #3b5998;
+
+}
+
+header img{
+	height: 60px;
+	margin-left: 35px;
+}
+
+/* ------------------------------------------ END  HEADER -------------------------------------------------*/
+
+.header-icon {
+	position: absolute;
+	right: 0;
+	margin: 10px;
+	top: 0;
+	padding: 0;
+	height: 50px;
+}
+
+/*HEADER SEARCH BAR*/
+.search-bar {
+	text-indent: 10px;
+	width: 500px;
+	height: 35px;
+	border: 1px solid #edf2f7;
+	background-color: #edf2f7!important;
+	font-family: inherit;
+	color: #4a5568!important;
+	border-radius: .45rem!important;
+}
+
+
+body{
+	margin: 0;
+	color: #232323;
+	padding: 0 0 5px;
+	background: #edf2f7 scroll;
+	alignment-adjust: auto;
+}
+div, h1, h2, h3, h4, p, form, label, input, textarea, img, span{
+	margin:0; padding:0;
+}
+
+ul{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	font-size:0;
+	line-height:0;
+}
+
+
+.spacer{
+	clear:both;
+	font-size:0;
+	line-height:0;
+}
+img {
+border:none;
+}
+
+/*------------------------------------------------BODY-------------------------------------------------------------*/
+
+
+#content {
+    margin: 0 auto;
+    width: 100%;
+	padding: 0px 0;
+	display: flex;
+    align-items: center;
+    justify-content: left;
+}
+h1 {
+	color:#676767;
+}
+h2 {
+	font: bold 18px/24px Arial, Helvetica, sans-serif;
+	color: #333333;
+}
+h3 {
+	color:#a9a9a9;
+}
+h4
+{
+	line-height: 28px;
+	font-weight: bold;
+	font-size: 20px;
+	color:#676767;
+}
+
+h4
+{
+	padding-left:25px;
+}
+
+p {
+	color: #8892a0;
+}
+
+#content_top{
+	margin:0 auto;
+	padding:5px 0;
+}
+
+#find {
+	margin:0;
+	background:#eeeeee;
+	width:280px;
+	padding:6px;
+}
+
+#find form input.textbox {
+	width:146px;
+}
+
+#find form input.find {
+	width:106px;
+	height:25px;
+	background:url(../images/find.jpg) 0 0 no-repeat;
+	border:none;
+}
+
+#main_content {
+	float:right;
+	width:612px;
+}
+
+#house_sales {
+	margin-left:215px ;
+	width:100%;
+}
+
+
+
+#content_bottom {
+	margin:0 auto;
+	width:929px;
+	padding:10px 0;
+}
+.features {
+	float: left;
+	width: 400px;
+	padding: 6px;
+}
+
+.features_content {
+	margin:5px auto;
+	width:195px;
+	text-align:justify;
+	padding-left:70px;
+}
+
+.more {
+	color:#4299da;
+}
+
+.more a {
+	color:#4299da;
+}
+
+.more a:hover {
+	color:#4299da;
+}
+
+/*STYLING INPUTS */
+.mt-4, .my-4 {
+	margin-top: 1.5rem!important;
+}
+@media (min-width: 768px) {
+	.col-md-5 {
+		-ms-flex: 0 0 41.666667%;
+		flex: 0 0 41.666667%;
+		max-width: 41.666667%;
+	}
+}
+.col-12 {
+	-ms-flex: 0 0 100%;
+	flex: 0 0 100%;
+	max-width: 100%;
+}
