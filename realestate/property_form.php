@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Form</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+     
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+</head>
+<body style="background-color:#EDF2F7;">
+<div class='separator'></div>
+
+
 <?php include('admin/connection.php'); ?>
  
 <?php
@@ -28,62 +42,50 @@ $filename="images/$name_property.jpg";
 
 
 print<<<HERE
-<td align="center"><br><br>
-<p align="center"><img src="$filename"  width="929" height="619"></p>
-</td>
-<td valign="top" class="text_menu">
-<table width="277" border="0" cellspacing="0" cellpadding="0" class="text_menu">
-  <tr>
-    <td align="left" colspan="3">
-<br>
-    <text class="text_menu">/ / Item Code: <text class="highlight">MO$id_property</text> / /</text>
-    <table class="text_menu" width="289" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="95">Item Name :</td>
-        <td width="188" class="highlight">$name_property</td>
-      </tr>
-      <tr>
-        <td>Item Price :</td>
-        <td>RM <text class="highlight">$price</text>
-		</td>
-      </tr>
-      <tr>
-        <td>Land Area :</td>
-        <td> <text class="highlight">$land_area</text>
-		</td>
-      </tr>
-      <tr>
-        <td>Groos Floor:</td>
-        <td><text class="highlight">$groos_floor_area</text>
-		</td>
-      </tr>
-    </table></td>
-  </tr>
-<br><br>
-</td></tr></table>
-<br>
-<u>Contact Agent About this Listing:</u><br><br>
-<hr>
-      <form name="form1" method="post" action="property_form_success.php">
-<table>
-<tr><td>Name </td><td>:<input type="text" name="name"></td></td></tr>
-<tr><td>No.Phone </td><td>:<input type="text" name="mobile_phone"></td></td></tr>
-<tr><td>Email </td><td>:<input type="text" name="cus_email"></td></td></tr>
-<tr><td>Date </td><td>:<input type="date" name="date"></td></td></tr>
-<tr><td>Time </td><td>:<input type="time" name="time"></td></td></tr>
-<tr><td>Reason </td><td>:<textarea name="reason" width="333"></textarea></td></td></tr>
-</table>
-<input type="hidden" name="id_property" value="$id_property">
-<p align="left"><input type="submit" name="submit" value="submit" /></p>
-</form>
- <hr>
- 	
+<u></u><br><br>
 
-</td>
-<br>
-</table>
+<div class="container">
+  <h2>Enquire About this Listing:<Strong>$name_property</Strong></h2>
+  <h3>Please Enter your details. We will contact you shortly.</h3>
+  <form name="form1" method="post" action="property_form_success.php">
+    <div class="form-group">
+      <label for="Name">Name:</label>
+      <input type="name" name="name"class="form-control" >
+    </div>
+    
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="text" name="mobile_phone" class="form-control" >
+    </div>
+
+    <div class="form-group">
+      <label for="Email">Email:</label>
+      <input type="text" name="cus_email" class="form-control" >
+    </div>
+
+    <div class="form-group">
+      <label for="Name">Additional Info:</label>
+      <textarea name="reason" width="333"  class="form-control"></textarea>
+    </div>
+      
+    <input type="hidden" name="id_property" value="$id_property">
+
+
+
+    <button type="submit" class="btn btn-default" name="submit" value="submit">Submit</button>
+ 
+    </form>
+       <button class="btn btn-default" name="HOME" value="HOME" onclick="location.href='index.php'">HOME</button>
+    
+    
+</div>
 
 HERE;
 
 }
  ?>
+
+
+ 
+</body>
+</html>

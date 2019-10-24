@@ -1,4 +1,3 @@
-
 <?php 
 session_start();
 if($_SESSION["myusername"]=="")
@@ -115,6 +114,7 @@ if($_SESSION["myusername"]=="")
 	</aside><!-- end of sidebar -->
 
 
+
 <!-----------------------------------------------END OF SIDEBAR---------------------------------------------------------------------->
 
 
@@ -129,7 +129,7 @@ if($_SESSION["myusername"]=="")
           <?php
 
 
-$tbl_name="property";
+$tbl_name="user_prop";
 $db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
 				
 $sql="SELECT*FROM $tbl_name GROUP BY id_property DESC";
@@ -144,8 +144,11 @@ $result=mysqli_query($db,$sql);
 <table width="916" border="0" cellspacing="0" cellpadding="1">
 
 <tr>
+
+<td width="92" align="center" bgcolor="#999999"><font color="white"><strong>Owner's Name</strong></td>
+<td width="92" align="center" bgcolor="#999999"><font color="white"><strong>Email</strong></td>
+<td width="92" align="center" bgcolor="#999999"><font color="white"><strong>phone</strong></td>
 <td width="92" align="center" bgcolor="#999999"><font color="white"><strong>Name Property</strong></td>
-<td width="107" align="center" bgcolor="#999999"><font color="white"><strong>Name Property</strong></td>
 <td width="60" align="center" bgcolor="#999999"><font color="white"><strong>Type</strong></td>
 <td width="116" align="center" bgcolor="#999999"><font color="white"><strong>Address</strong></td>
 <td width="84" align="center" bgcolor="#999999"><font color="white"><strong>Postcode</strong></td>
@@ -154,8 +157,8 @@ $result=mysqli_query($db,$sql);
 <td width="60" align="center" bgcolor="#999999"><font color="white"><strong>Land Area</strong></td>
 <td width="58" align="center" bgcolor="#999999"><font color="white"><strong>Groos Floor</strong></td>
 <td width="54" align="center" bgcolor="#999999"><font color="white"><strong>Leasehold</strong></td>
-<td width="104" align="center" bgcolor="#999999"><strong>Delete</strong></td>
-
+<td width="104" align="center" bgcolor="#999999"><strong>Approve</td>
+<td width="104" align="center" bgcolor="#999999"><strong>DELETE</td>
 </tr>
 
 <?php
@@ -164,7 +167,9 @@ while($rows=mysqli_fetch_array($result))
 ?>
 
 <tr>
-<td bgcolor="#E2E2E2"><font color="black"><center><img src="./images/<?php echo $rows['name_property'];?>.jpg" width="86" height="66" /></center></td>
+<td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['name'];?></td>
+<td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['email'];?></td>
+<td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['phone'];?></td>
 <td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['name_property'];?></td
 ><td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['type_property'];?></td
 ><td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['add1'];?></td
@@ -173,11 +178,29 @@ while($rows=mysqli_fetch_array($result))
 ><td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['price_type'];?></td
 ><td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['land_area'];?></td
 ><td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['groos_floor_area'];?></td
-><td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['leasehold'];?></td
-
-><td align="center" bgcolor="#E2E2E2"><a href="delete_property.php?name_property=<?php echo $rows['name_property'];?>" onClick="alert('Are you sure want to DELETE this data????');"><img src="./images/icn_trash.png"/></a><form id="form1" name="form1" method="post" action="upload.php">
-        <input type="submit" name="btn_picedit" id="btn_picedit" value="UPLOAD" />
-        <input name="hf_uname" type="hidden" id="hf_uname" value="<?php echo $rows['name_property']; ?>" />
+><td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['leasehold'];?></td>
+<td align="center" bgcolor="#E2E2E2">
+        <form id="form1" name="form1" method="post" action="approve_user_property.php">
+        <button onClick="alert('SURE YOU WANT TO APPROVE THIS PROPERTY?')" ><img src="./images/icn_alert_success.png"/></button>
+        <input name="name_property" type="hidden"  value="<?php echo $rows['name_property']; ?>" />
+        <input name="type_property" type="hidden"  value="<?php echo $rows['type_property']; ?>" />
+        <input name="add1" type="hidden"  value="<?php echo $rows['add1']; ?>" />
+        <input name="add2" type="hidden"  value="<?php echo $rows['add2']; ?>" />
+        <input name="price" type="hidden"  value="<?php echo $rows['price']; ?>" />
+        <input name="price_type" type="hidden"  value="<?php echo $rows['price_type']; ?>" />
+        <input name="land_area" type="hidden"  value="<?php echo $rows['land_area']; ?>" />
+        <input name="gross_floor_area" type="hidden"  value="<?php echo $rows['gross_floor_area']; ?>" />
+        <input name="leasehold" type="hidden"  value="<?php echo $rows['leasehold']; ?>" /> 
+        <input name="flag" type="hidden"  value=1 />
+        
+      </form></td>
+<td align="center" bgcolor="#E2E2E2">
+    <form id="form2" name="form2" method="post" action="approve_user_property.php">
+    <button ><img src="./images/icn_trash.png"/></button>
+    <input name="name_property" type="hidden" value="<?php echo $rows['name_property']; ?>" />
+    <input name="flag" type="hidden"  value=0 />
+                 
+      
       </form></td>
 
 </tr>
@@ -198,7 +221,7 @@ while($rows=mysqli_fetch_array($result))
 </table>
 
 <?php
-mysqli_close();
+mysqli_close($db);
 ?>
 	    <p>&nbsp;</p>
 	    <p>&nbsp;</p>

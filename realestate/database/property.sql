@@ -50,15 +50,12 @@ INSERT INTO `admin` (`id`, `name`, `myusername`, `mypassword`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `customer` (
-  `cus_id` int(11) NOT NULL AUTO_INCREMENT,
   `id_property` int(11) NOT NULL,
   `name` varchar(11) NOT NULL,
   `mobile_phone` varchar(11) NOT NULL,
   `cus_email` varchar(11) NOT NULL,
-  `date` varchar(11) NOT NULL,
-  `time` varchar(11) NOT NULL,
   `reason` varchar(333) NOT NULL,
-  PRIMARY KEY (`cus_id`)
+  PRIMARY KEY (`id_property`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
@@ -125,8 +122,12 @@ INSERT INTO `message` (`id_message`, `reason`, `name`, `no_fon`, `email`, `messa
 -- Table structure for table `property`
 --
 
-CREATE TABLE IF NOT EXISTS `property` (
+CREATE TABLE IF NOT EXISTS `user_prop` (
   `id_property` int(5) NOT NULL AUTO_INCREMENT,
+  
+  `name` varchar(26) NOT NULL,
+  `email` varchar(26) NOT NULL,
+  `phone` varchar(10) NOT NULL,
   `name_property` varchar(250) NOT NULL,
   `type_property` varchar(255) NOT NULL,
   `add1` varchar(300) NOT NULL,

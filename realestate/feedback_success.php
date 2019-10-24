@@ -63,43 +63,39 @@
 <!-------------------------------- SUCCESS MESSAGE ------------------------------------------------!>
 
 <?php
-$tbl_name="message";
+$host="localhost:3306";
+$user="root";
+$password="";
+$tbl_name="customer";
+$db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
 
-$db= mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
-
-$reason = $_POST['reason'];
 $name = $_POST['name'];
-$no_fon = $_POST ['no_fon'];
-$email = $_POST['email'];
-$message = $_POST['message'];
+$mobile_phone = $_POST['mobile_phone'];
+$cus_email = $_POST ['cus_email'];
+$reason = $_POST['reason'];
+$id_property = $_POST['id_property'];
 
-$sql = "INSERT INTO $tbl_name(reason, name, no_fon, email, message) VALUE('$reason', '$name', '$no_fon',  '$email', '$message')";
+
+//echo 
+$sql = "INSERT INTO $tbl_name(id_property, name, mobile_phone, cus_email, reason) VALUE('$id_property','$name', '$mobile_phone', '$cus_email',  '$date', '$time', '$reason')";
+//die();
 
 $result = mysqli_query($db,$sql);
 
 
-if($result){
-    echo "<section class='fdb-block'>";
-        echo "<div class='container'>";
-            echo "<div class='row align-items-center justify-content-center'>";
-                echo"<div class='col-auto'  style='margin-top: 1.5em;margin-right: 1.3rem;'>";
-                echo"<h2 style='font-size: 2rem; color:#25ae88'>Feedback was successfully sent</h2>";
-                echo"</div>";
-                echo"<div class='col-auto mt-4 mt-sm-0'>";
-                echo "<a href='index.php' class='bg-blue-500 text-white font-bold py-2 px-4 rounded'>HOME</a>";
-                echo"</div>";
-        echo"</div>";
-        echo"</div>";
-
-    echo"</section>";
+if($result)
+{
+echo "<p><center>";
+echo "";
+echo "<br>";
+echo "<a href='index.php'><img src='images/success.ico'></a>";
 }
-
-else{
-    echo "Error";
-    echo mysqli_error();
+else
+{
+echo "Error";
+echo mysqli_error();
 }
 ?>
-
 <!----------------------------------------------- SECTION ABOUT US ------------------------------------>
     <section class="fdb-block" style="background-image: url(./images/blocks/8.svg)">
       <div class="container">

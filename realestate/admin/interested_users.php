@@ -1,11 +1,38 @@
+<?php 
+session_start();
+if($_SESSION["myusername"]=="")
+{	
+?>
+	<script type="text/javascript">
+		window.location="admin_login.php";
+    </script>
+<?php 
+}
+	include "connection.php"; ?>
+
+
 <!doctype html>
 <html lang="en">
 
 <head>
+
+	
+<!-----------------------------------------------SIDEBAR---------------------------------------------------------------------->
+
+
 	<meta charset="utf-8"/>
 	<title>Dashboard I Admin Panel</title>
 	
 	<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
+	<style type="text/css">
+	#main .module.width_full table tr td table tr td strong {
+	color: #000;
+}
+    #main .module.width_full table tr td table tr td {
+	font-size: 10px;
+	text-align: center;
+}
+    </style>
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -54,15 +81,15 @@
 
 	<header id="header">
 		<hgroup>
-			<h1 class="site_title"><a href="index.html">Website Admin</a></h1>
+			<h1 class="site_title"><a href="admin_home.php">Website Admin</a></h1>
 			<h2 class="section_title">Dashboard</h2>
 		</hgroup>
 	</header> <!-- end of header bar -->
 	
 	<section id="secondary_bar">
 		<div class="user">
-			<p>John Doe (<a href="#">3 Messages</a>)</p>
-			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
+		  <p><?php $_SESSION['myusername']; ?> (<a href="admin_home.php">Admin</a>)</p>
+		  <!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
 		</div>
 		<div class="breadcrumbs_container">
 			<article class="breadcrumbs"><a href="index.html">Website Admin</a> <div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
@@ -87,44 +114,84 @@
 	</aside><!-- end of sidebar -->
 
 
+<!-----------------------------------------------END OF SIDEBAR---------------------------------------------------------------------->
+
+
 	<section id="main" class="column">
 		
-		<!-- end of stats article --><!-- end of content manager article --><!-- end of messages article -->
-		
-	  <div class="clear"></div>
-		
-		<article class="module width_full">
-			<header><h3>Post New Article</h3></header>
-			<p>
-<?php
+		<h4 class="alert_success">A Success Message</h4><!-- end of stats article --><!-- end of content manager article -->
+      <!-- end of messages article --><!-- end of post new article -->
 
-$tbl_name="property";
+      <article class="module width_full">
+	    <header><h3>Basic Styles</h3></header>
+        <p>
+          <?php
 
+
+$tbl_name="customer";
 $db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
 				
-
-$name_property=$_GET['name_property'];
-
-$sql="DELETE FROM $tbl_name WHERE name_property='$name_property'";
+$sql="SELECT*FROM $tbl_name GROUP BY id_property DESC";
 $result=mysqli_query($db,$sql);
+?>
+        </p>
+        <table width="838" border="0" align="center" cellpadding="0" cellspacing="1">
+          <tr>
+<td width="836">
+<center>
 
-if($result)
+<table width="916" border="0" cellspacing="0" cellpadding="1">
+
+<tr>
+
+<td width="92" align="center" bgcolor="#999999"><font color="white"><strong>name_property</strong></td>
+<td width="92" align="center" bgcolor="#999999"><font color="white"><strong>Full Name</strong></td>
+<td width="92" align="center" bgcolor="#999999"><font color="white"><strong>Phone</strong></td>
+<td width="92" align="center" bgcolor="#999999"><font color="white"><strong>Email</strong></td>
+<td width="92" align="center" bgcolor="#999999"><font color="white"><strong>Addnl_info</strong></td>
+</tr>
+
+<?php
+while($rows=mysqli_fetch_array($result))
 {
-echo "<a href='admin_view.php'><h4 class='alert_success'>A Success Message</h4></a>";
-}
+    $prop =  $rows['id_property'];
+    $sql1="SELECT name_property FROM property WHERE id_property =  '$prop' ";
+    $res=mysqli_query($db,$sql1);
+    $row_prop=mysqli_fetch_array($res);
 
-else{
-	echo"ERROR";
-}
-
-mysqli_close();
 ?>
 
-			<p>&nbsp;</p>
-			<footer>
-		  </footer>
-		</article><!-- end of post new article --><!-- end of styles article -->
-	  <div class="spacer"></div>
+<tr>
+<td bgcolor="#E2E2E2"><font color="black"><?php echo $row_prop['name_property'];?></td>
+<td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['name'];?></td>
+<td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['mobile_phone'];?></td>
+<td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['cus_email'];?></td
+><td bgcolor="#E2E2E2"><font color="black"><?php echo $rows['reason'];?></td>
+</tr>
+
+
+<?php
+
+}
+
+?>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+<?php
+mysqli_close($db);
+?>
+	    <p>&nbsp;</p>
+	    <p>&nbsp;</p>
+	    <p>&nbsp;</p>
+      </article><!-- end of styles article -->
+		<div class="spacer"></div>
 	</section>
 
 

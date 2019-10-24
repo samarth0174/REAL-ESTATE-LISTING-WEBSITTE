@@ -44,7 +44,7 @@
                     <b><a href="about.php">ABOUT US</a></b>
                 </li>
                 <li>
-                    <b><a href="feedback.php">FEEDBACK</a></b>
+                <b><a href="business.php">SELL</a></b>                </li>
                 </li>
                 <li>
                     <img src="./static/icons/icon-edit-user.png" alt="user" class="header-icon"/>

@@ -23,10 +23,7 @@ if($_SESSION["myusername"]=="")
 	font-size: 10px;
 }
     </style>
-	<!--[if lt IE 9]>
-	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+	
 	<script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
 	<script src="js/hideshow.js" type="text/javascript"></script>
 	<script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
@@ -87,33 +84,24 @@ if($_SESSION["myusername"]=="")
 		</div>
 	</section><!-- end of secondary bar -->
 	
-<aside id="sidebar" class="column">
+	<aside id="sidebar" class="column">
 		<h3>Content</h3>
 		<ul class="toggle">
 			<li><a href="admin_home.php">Home</a></li>
 			<li class="icn_new_article"><a href="admin_new.php">New Add Property</a></li>
-			<li class="icn_edit_article"><a href="admin_view.php">View Information</a></li>
-			<li class="icn_tags"><a href="map.php">Map</a></li>
-		</ul>
-		<h3>Users</h3>
-		<ul class="toggle">
-			<li class="icn_add_user"><a href="add_customer.php">Add Customer</a></li>
-			<li class="icn_view_users"><a href="view_customer.php">Find Customer</a></li>
-			<li class="icn_profile"><a href="view_all.php">View All</a></li>
-		</ul>
-		<h3>Admin</h3>
-		<ul class="toggle">
-			<li class="icn_jump_back"><a href="setting.php">Setting</a></li>
+			<li class="icn_edit_article"><a href="admin_view.php">View All Properties</a></li>
+			<li class="icn_profile"><a href="interested_users.php">Interested Users</a></li>
+			<li class="icn_profile"><a href="business_req.php">Sellers</a></li>
 			<li class="icn_jump_back"><a href="logout.php">Logout</a></li>
-		</ul>
+		
 		
 		<footer>
 			<hr />
-			<p><strong>Copyright &copy; 2011 Website Admin</strong></p>
+			<p><strong>Copyright &copy; VIT ESTATES</strong></p>
 			<p>&nbsp;</p>
 		</footer>
 	</aside><!-- end of sidebar -->
-	
+
 	<section id="main" class="column">
 	  <article class="module width_full">
 		  <header>
@@ -155,10 +143,7 @@ if($_SESSION["myusername"]=="")
         <td height="88"><font color="black"><img src="images/<?php echo $rows['myusername'];?>.jpg" width="81" height="81"></td
         ><td height="88"><font color="black"><?php echo $rows['name'];?></td
         ><td width="140"><font color="black"><?php echo $rows['myusername'];?></td
-        ><td><font color="black"><?php echo $rows['mypassword'];?></td
-        ><td width="65" align="center"><a href="delete_admin.php?name=<?php echo $rows['name'];?>" onClick="alert('Are you sure want to DELETE this data????');">DELETE</a></td>
-        
-        
+        ><td><font color="black"><?php echo $rows['mypassword'];?></td>
         </tr>
         
         
@@ -182,163 +167,6 @@ if($_SESSION["myusername"]=="")
 
 
 </table>
-
-
- </article>
-			  <div class="clear">
-			    <form name="form2" method="post" action="update.php">
-			    </form>
-			  </div>
-	    </div>
-		</article><!-- end of stats article -->
-		
-		<article class="module width_3_quarter">
-		<header><h3 class="tabs_involved">Content </h3>
-		<ul class="tabs">
-   			<li><a href="#tab1">ContactMe</a></li>
-    		<li><a href="#tab2">Message</a></li>
-		</ul>
-		</header>
-			<?php
-        
-       
-        $tbl_name="feedback";
-		
-        $db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
-		$sql="SELECT*FROM $tbl_name ORDER BY id_feedback DESC";
-        $result=mysqli_query($db,$sql);
-        ?>
-			
-			<div id="tab1" class="tab_content">
-			<table class="tablesorter" cellspacing="0"> 
-			<thead> 
-				<tr> 
-   					<th width="6%"></th> 
-    				<th width="29%">Reason</th> 
-    				<th width="30%">Name</th> 
-    				<th width="24%">Email</th> 
-    				<th width="11%">Action</th> 
-				</tr> 
-			</thead> 
-        
-        <?php
-        while($rows=mysqli_fetch_array ($result))
-        {
-        ?>
-            
-			<tbody> 
-				<tr> 
-   					<td><input type="checkbox"></td> 
-    				<td><?php echo $rows['reason'];?></td> 
-    				<td><?php echo $rows['name'];?></td> 
-    				<td><?php echo $rows['question'];?></td> 
-    				<td>
-                    <a href="delete_feedback.php?id_feedback=<?php echo $rows['id_feedback'];?>" onClick="alert('Are you sure want to DELETE this data????');"><img src="images/icn_trash.png"></a></td> 
-				</tr>
-            
-        <?php
-        
-        }
-        
-        ?>
-
-			</tbody> 
-			</table>
-
-            
-        <?php
-        mysqli_close($db);
-        ?>
-			</div><!-- end of #tab1 -->
-			<?php
-        
-        $db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
-       
-        $tbl_name="message";
-        
-        $sql="SELECT*FROM $tbl_name ORDER BY id_message DESC";
-        $result=mysqli_query($db,$sql);
-        ?>
-			
-			<div id="tab2" class="tab_content">
-			<table class="tablesorter" cellspacing="0"> 
-			<thead> 
-				<tr> 
-   					<th width="6%"></th> 
-    				<th width="30%">Name</th> 
-    				<th width="29%">Contact</th> 
-    				<th width="24%">Email</th> 
-    				<th width="11%">Actions</th> 
-				</tr> 
-			</thead> 
-        
-        <?php
-        while($rows=mysqli_fetch_array ($result))
-        {
-        ?>
-            
-			<tbody> 
-				<tr> 
-   					<td><input type="checkbox"></td> 
-    				<td><?php echo $rows['name'];?></td> 
-    				<td><?php echo $rows['no_fon'];?></td> 
-    				<td><?php echo $rows['email'];?></td> 
-    				<td><a href="delete_message.php?name=<?php echo $rows['name'];?>" onClick="alert('Are you sure want to DELETE this data????');"><img src="images/icn_trash.png"></a>
-                    </td> 
-				</tr>
-            
-        <?php
-        
-        }
-        
-        ?>
-
-			</tbody> 
-			</table>
-
-            
-        <?php
-        mysqli_close();
-        ?>
-			</div><!-- end of #tab2 -->
-			
-		</div><!-- end of .tab_container -->
-		
-		</article><!-- end of content manager article -->
-			<?php
-        
-      
-        $tbl_name="message";
-        
-	    
-        $db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
-		$sql="SELECT*FROM $tbl_name ORDER BY id_message DESC";
-        $result=mysqli_query($db,$sql);
-        ?>
-		<article class="module width_quarter">
-			<header><h3>Messages</h3></header>
-			<div class="message_list">
-				<div class="module_content">
-                                    <?php
-        while($rows=mysqli_fetch_array ($result))
-        {
-        ?>
-
-					<div class="message"><p><?php echo $rows['message'];?> :</p>
-					<p><strong><?php echo $rows['name'];?></strong></p></div>
-        <?php
-        
-        }
-        
-        ?>
-
-				</div>
-			</div>
-
-			<footer>
-        <?php
-        mysqli_close($db);
-        ?>
 
 				<form class="post_message">
 				</form>

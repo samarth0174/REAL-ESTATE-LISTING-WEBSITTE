@@ -77,32 +77,22 @@
 		</div>
 	</section><!-- end of secondary bar -->
 	<aside id="sidebar" class="column">
-	  <h3>Content</h3>
-	  <ul class="toggle">
-	    <li><a href="admin_home.php">Home</a></li>
-	    <li class="icn_new_article"><a href="admin_new.php">New Add Property</a></li>
-	    <li class="icn_edit_article"><a href="admin_view.php">View Information</a></li>
-	    <li class="icn_tags"><a href="map.php">Map</a></li>
-      </ul>
-	  <h3>Users</h3>
-	  <ul class="toggle">
-	    <li class="icn_add_user"><a href="add_customer.php">Add Customer</a></li>
-	    <li class="icn_view_users"><a href="view_customer.php">Find Customer</a></li>
-	    <li class="icn_profile"><a href="view_all.php">View All</a></li>
-      </ul>
-	  <h3>Admin</h3>
-	  <ul class="toggle">
-	    <li class="icn_jump_back"><a href="setting.php">Setting</a></li>
-	    <li class="icn_jump_back"><a href="logout.php">Logout</a></li>
-      </ul>
-	  <footer>
-	    <hr />
-	    <p><strong>Copyright &copy; 2011 Website Admin</strong></p>
-	    <p>&nbsp;</p>
-      </footer>
-</aside>
-	<!-- end of sidebar -->
-	
+		<h3>Content</h3>
+		<ul class="toggle">
+			<li><a href="admin_home.php">Home</a></li>
+			<li class="icn_new_article"><a href="admin_new.php">New Add Property</a></li>
+			<li class="icn_edit_article"><a href="admin_view.php">View All Properties</a></li>
+			<li class="icn_profile"><a href="business_req.php">Interested Users</a></li>
+			<li class="icn_profile"><a href="business_req.php">Sellers</a></li>
+			<li class="icn_jump_back"><a href="logout.php">Logout</a></li>
+		
+		
+		<footer>
+			<hr />
+			<p><strong>Copyright &copy; VIT ESTATES</strong></p>
+			<p>&nbsp;</p>
+		</footer>
+	</aside><!-- end of sidebar -->
 	<section id="main" class="column">
 		
 		<h4 class="alert_success">A Success Message</h4><!-- end of stats article --><!-- end of content manager article -->

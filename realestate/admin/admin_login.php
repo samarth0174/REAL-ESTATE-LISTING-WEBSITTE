@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Untitled Document</title>
+<title>Admin Login</title>
 <!--sa poip up-->
 <link href="src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
    <script src="lib/jquery.js" type="text/javascript"></script>
@@ -40,8 +40,9 @@ if ((y==null || y==""))
 
 </head>
 
-<body>
-<div style="width:300px; margin:0 auto; position:relative; border:3px solid rgba(0,0,0,0); -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; -webkit-box-shadow:0 0 18px rgba(0,0,0,0.4); -moz-box-shadow:0 0 18px rgba(0,0,0,0.4); box-shadow:0 0 18px rgba(0,0,0,0.4); margin-top:20px;">
+<body style="background-color:#EDF2F7;">
+
+<div style="width:300px; margin:0 auto; position:relative;background-color:white;border:3px solid rgba(0,0,0,0); -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; -webkit-box-shadow:0 0 18px rgba(0,0,0,0.4); -moz-box-shadow:0 0 18px rgba(0,0,0,0.4); box-shadow:0 0 18px rgba(0,0,0,0.4); margin-top:20px;">
   <form id="form1" name="login" method="post" action="login_success.php">
   <table width="286" align="center">
   <tr>
@@ -63,7 +64,7 @@ if ((y==null || y==""))
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><input type="submit" name="Submit" value="login" /></td>
+    <td><input type="submit" class="bg-blue-500 text-blue font-bold py-2 px-4 rounded" style="border: 0;height: calc(2.1rem + 0.25rem);" name="Submit" value="login" /></td>
   </tr>
   <tr>
     <td colspan="2">&nbsp;</td>

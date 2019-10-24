@@ -18,11 +18,12 @@
     <link href="./css/main_sidebar.css" rel="stylesheet" type="text/css">
     <link href="./css/gallery_style.css" rel="stylesheet" type="text/css">
     
-
     <!---------------------------------------------------------- ICONS ------------------------------------->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
 </head>
+
+
 
 <body>
 
@@ -58,24 +59,78 @@
 
 <div class='separator'></div>
 
+
+<!-------------------------------- SUCCESS MESSAGE ------------------------------------------------!>
+<?php
+
+
+//database connection information
+$host="localhost:3306";
+$user="root";
+$password="";
+$db=mysqli_connect("localhost:3306","root","","property") or die(mysql_error());
+
+
+$name_property =$_POST["name_property"];
+$name_user=$_POST["name_user"];
+$email=$_POST["email"];
+$phone=$_POST["phone"];
+$type_property=$_POST["type_property"];
+$add1=$_POST["add1"];
+$add2=$_POST["add2"];
+$price=$_POST["price"];
+$price_type=$_POST["price_type"];
+$land_area=$_POST["land_area"];
+$groos_floor_area=$_POST["groos_floor_area"];
+$leasehold=$_POST["leasehold"];
+$beds=$_POST["beds"];
+$baths=$_POST["baths"];
+$per_square_feet=$_POST["per_square_feet"];
+$square_feet=$_POST["square_feet"];
+$text=$_POST["text"];
+
+$insert_sql="INSERT INTO user_prop VALUES('','$name_user','$email','$phone', '$name_property', '$type_property', '$add1', '$add2', '$price', '$price_type', '$land_area', '$groos_floor_area', '$leasehold', '$beds', '$baths', '$per_square_feet', '$square_feet', '$text')";
+
+$result=mysqli_query($db,$insert_sql) or die("Error in inserting data due to
+".mysqli_error($db));
+
+
+
+if($result){
+    echo "<section class='fdb-block'>";
+        echo "<div class='container'>";
+            echo "<div class='row align-items-center justify-content-center'>";
+                echo"<div class='col-auto'  style='margin-top: 1.5em;margin-right: 1.3rem;'>";
+                echo"<h2 style='font-size: 2rem; color:#25ae88'>Thank u!We will contact you soon!</h2>";
+                echo"</div>";
+                echo"<div class='col-auto mt-4 mt-sm-0'>";
+                echo "<a href='index.php' class='bg-blue-500 text-white font-bold py-2 px-4 rounded'>HOME</a>";
+                echo"</div>";
+        echo"</div>";
+        echo"</div>";
+
+    echo"</section>";
+}
+else
+echo "Error in inserting new data";
+?>
+
 <!----------------------------------------------- SECTION ABOUT US ------------------------------------>
     <section class="fdb-block" style="background-image: url(./images/blocks/8.svg)">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-12 col-md-6 col-lg-5" style="margin-left: 50px;">
             <h3 class='logo-text'>VIT<span>ESTATES</span></h3>
-            <p class="lead">VIT ESTATES
-                             Is the leading real estate and rental marketplace dedicated to empowering
-                             consumers with data, inspiration and knowledge around the place they call home,
-                             and connecting them with the best local professionals who can help.
-                            VIT ESTATES serves the full lifecycle of owning and living in a home: buying,
-                            selling, renting, financing, remodeling and more. It starts with VIT ESTATES's
-                            living database of more than 110 million U.S. homes - including homes for sale, homes
-                            for rent and homes not currently on the market, as well as estimating home values, Rent Estimates
-                             and other home-related information. VIT ESTATES operates the most popular suite of mobile
-                             real estate apps, with more than two dozen apps across all major platforms.
-
-                            VIT ESTATES launched in 2019 and is headquartered in VIT UNIVERSITY.
+            <p class="lead">THANK YOU
+                             Thank you for taking the time to tell us where we could serve your needs or expectations.
+                             <br><br>
+                             We value your business, and would like to address your concerns as quickly as possible
+                             Your continued patronage and suggestions are a vital part of our growth.
+                              And for that, we are most grateful.
+                             <br><br>
+                             Thanks again! We look forward to serving you for many years to come.
+                              <br><br>
+                             Best regards,
             </p>
           </div>
           <div class="col-10 col-sm-6 m-auto col-md-4 pt-4 pt-md-0">
@@ -84,7 +139,6 @@
         </div>
       </div>
     </section>
-
 
 
 <!---------------------------------------------- FOOTER ------------------------------------------------->
@@ -146,7 +200,8 @@
 
 			</div>
 
-		</footer>
+</footer>
+
 
 </body>
 </html>
